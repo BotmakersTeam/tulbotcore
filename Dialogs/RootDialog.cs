@@ -64,8 +64,22 @@ namespace SimpleEchoBot.Dialogs
                 }
                 else if (message.Text.ToLower().Contains("jednostka"))
                 {
-                    content = message.Text.Substring(9);
+                    content = message.Text.Substring(10);
                     //go to db and find record, send to user;
+                    using (var dbcontext = new tulbotdevEntities1())
+                    {
+                        var departm = dbcontext.department
+                            .Where(b => b.Short.ToLower() == content.ToLower() ||
+                            b.Code.ToLower() == content.ToLower() ||
+                            b.Name.ToLower() == content.ToLower())
+                            .FirstOrDefault();
+                        if (departm != null)
+                        {
+                            await context.PostAsync($"{departm.Name}, skrót: {departm.Short}, " +
+                                $"strona internetowa: {departm.Website} telefon kontaktowy: {departm.Tel}" +
+                                $", adresa: {departm.Adress}");
+                        }else await context.PostAsync("Nie znalazłem jednostki o takiej nazwie");
+                    }
                 }
                 else await context.PostAsync("Dont know that command sorry");
 
