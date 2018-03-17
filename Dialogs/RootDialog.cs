@@ -38,7 +38,7 @@ namespace SimpleEchoBot.Dialogs
                 string content;
                 if (message.Text.ToLower().Contains("help"))
                 {
-                    context.PostAsync("")
+                    context.PostAsync("to be done.");
                 }
                 if (message.Text.ToLower().Contains("wykladowca") || message.Text.ToLower().Contains("wykładowca"))
                 {
@@ -50,8 +50,10 @@ namespace SimpleEchoBot.Dialogs
                 {
                     content = message.Text.Substring(9);
                     //go to db and find record, send to user;
-                } else await context.PostAsync("Dont know that command sorry"); 
+                }
+                else await context.PostAsync("Dont know that command sorry");
 
             }
+        }
     }
 }
