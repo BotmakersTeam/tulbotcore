@@ -28,8 +28,9 @@ namespace SimpleEchoBot.Dialogs
 
                     //var bot = message.MembersAdded.First();
                     if (!(message.MembersAdded.First().Name == "Bot"))
-                        await context.PostAsync($" Welcome to TULBot! You can type \"info\"" +
-                            $" to get info about my abilities.");
+                        await context.PostAsync($" Cześć! to jest bot, który nada Ci różną informację" +
+                            $" o Politechnice Łódzkiej. Napisz \"help\"" +
+                            $"dla otrzymania informacji o tym co aktualnie umiem.");
                 }
             }
             else
@@ -38,7 +39,7 @@ namespace SimpleEchoBot.Dialogs
                 string content;
                 if (message.Text.ToLower().Contains("help"))
                 {
-                    context.PostAsync("to be done.");
+                    context.PostAsync("");
                 }
                 if (message.Text.ToLower().Contains("wykladowca") || message.Text.ToLower().Contains("wykładowca"))
                 {
